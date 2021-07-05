@@ -28,9 +28,27 @@ if (!(Get-Module -ListAvailable -Name Terminal-Icons)) {
     }
 }
 
+
 Import-Module -Name posh-git
 Import-Module -Name oh-my-posh
 Import-Module -Name Terminal-Icons
+
+
+if (!(Get-Module -ListAvailable -Name PSReadLine)) {
+    try {
+        Install-Module -Name PSReadLine -Confirm:$false -AllowPrerelease -Force
+    }
+    catch [Exception] {
+        $_.message 
+        exit
+    }
+}
+
+Import-Module PSReadLine
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
+
 
 Write-Host "                                ..," -ForegroundColor DarkCyan
 Write-Host "                    ....,,:;+ccllll" -ForegroundColor DarkCyan
