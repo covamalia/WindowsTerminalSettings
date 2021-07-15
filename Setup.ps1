@@ -6,5 +6,7 @@ Get-ChildItem -Path $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3
 Copy-Item RoamingState $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\ -Force -Recurse
 
 # Back up settings, then copy new settings
-Rename-Item -Path $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json -NewName settings.json.$backupDate.bak -Force
+if (Test-Path -path $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json) {
+  Rename-Item -Path $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json -NewName settings.json.$backupDate.bak -Force
+}
 Copy-Item settings.json -Destination $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
