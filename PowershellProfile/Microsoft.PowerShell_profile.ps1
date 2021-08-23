@@ -70,7 +70,7 @@ Write-Host "       ``'\\*::  :ccllllllllllllllll" -ForegroundColor DarkCyan
 Write-Host "                       ````````''*::cll" -ForegroundColor DarkCyan
 Write-Host "                                 ````" -ForegroundColor DarkCyan
 
-Set-Theme Agnoster
+Set-PoshPrompt Agnoster
 
 # Import-Module MSTerminalSettings
 # $msTermProfileName = 'PowerShell' # Replace with whatever Terminal profile name you're using
